@@ -60,7 +60,14 @@
         state: present
 
     - name: load schema 
-      ansible.builtin.command: mysql -h mysql.daws-86s.space -uroot -pExpenseApp@1 < /app/schema/backend.sql
+      # ansible.builtin.command: mysql -h mysql.daws-86s.space -uroot -pExpenseApp@1 < /app/schema/backend.sql
+      community.mysql.mysql_db:
+        login_host: mysql.daws-86s.space
+        login_user: root
+        login_password: ExpenseApp@1
+        name: mysql
+        state: import
+        target: /app/schema/backend.sql
 
     - name: restart backend service
       ansible.builtin.systemd_service:
