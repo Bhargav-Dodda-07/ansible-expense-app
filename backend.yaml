@@ -1,0 +1,30 @@
+- name: setup backend server
+  hosts: backend
+  become: yes
+
+  tasks:
+    - name: disable default nodejs module
+      ansible.builtin.command: dnf module disable nodejs -y
+
+    - name: enable nodejs 20 module
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+
+    - name: install nodejs server
+      ansible.builtin.package:
+        name: nodejs
+        state: present
+    
+    - name: create expense system user
+      ansible.builtin.user:
+        name: expense
+
+    # Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
+    - name: remove app directory
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
+    - name: create app directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
