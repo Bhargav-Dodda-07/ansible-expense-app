@@ -68,6 +68,11 @@
       ansible.builtin.pip:
         name: pymysql
         state: present
+
+    - name: Install cryptography via pip
+      ansible.builtin.pip:
+        name: cryptography
+        state: present
           
     - name: load schema 
       # ansible.builtin.command: mysql -h mysql.daws-86s.space -uroot -pExpenseApp@1 < /app/schema/backend.sql
