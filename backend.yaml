@@ -59,9 +59,14 @@
         name: mysql
         state: present
 
+    - name: Ensure pip is installed
+      ansible.builtin.dnf:
+        name: python3-pip
+        state: present
+
     - name: Install PyMySQL dependency
-      ansible.builtin.package:
-        name: python3-pymysql
+      ansible.builtin.pip:
+        name: pymysql
         state: present
           
     - name: load schema 
