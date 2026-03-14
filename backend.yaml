@@ -36,8 +36,8 @@
 
     - name: download backend application
       ansible.builtin.get_url:
-      url: https://expense-joindevops.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-      dest: /tmp/backend.zip
+        url: https://expense-joindevops.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+        dest: /tmp/backend.zip
 
     - name: extract backend application
       ansible.builtin.unarchive:
