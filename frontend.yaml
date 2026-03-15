@@ -35,7 +35,7 @@
         path: /etc/nginx/default.d/expense.conf
 
     - name: copy the expense app content
-      ansible.builtin.file:
+      ansible.builtin.copy:
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
 
