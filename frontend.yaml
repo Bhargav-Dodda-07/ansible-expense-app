@@ -27,7 +27,7 @@
       ansible.builtin.unarchive:
         src: /tmp/frontend.zip
         dest: /usr/share/nginx/html/
-        romote_src: yes
+        remote_src: yes
 
     - name: remove default content in nginx
       ansible.builtin.file:
